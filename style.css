@@ -340,6 +340,7 @@ header {
     animation: fadeIn 0.3s;
     backdrop-filter: blur(10px);
     overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 }
 
