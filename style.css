@@ -5,11 +5,19 @@
     font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
+/* Correções para Safari/iOS */
+html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
 body {
     background-color: #000000;
     color: #ffffff;
     position: relative;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* ========== FUNDO ESPACIAL TURBINADO ========== */
@@ -22,6 +30,8 @@ body::before {
     height: 200%;
     z-index: 0;
     pointer-events: none;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
     background-image: 
         /* Estrelas grandes - muito brilhantes */
         radial-gradient(4px 4px at 10% 20%, rgba(255, 255, 255, 1), transparent),
@@ -77,6 +87,8 @@ body::after {
     height: 200%;
     z-index: 0;
     pointer-events: none;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
     background-image: 
         /* Estrelas menores e médias */
         radial-gradient(3px 3px at 7% 10%, rgba(255, 255, 255, 1), transparent),
@@ -115,18 +127,23 @@ body::after {
 /* Animação principal - movimento grande */
 @keyframes moverEstrelas {
     0% {
+        -webkit-transform: translate(0, 0) rotate(0deg) scale(1);
         transform: translate(0, 0) rotate(0deg) scale(1);
     }
     25% {
+        -webkit-transform: translate(-30px, 40px) rotate(1deg) scale(1.05);
         transform: translate(-30px, 40px) rotate(1deg) scale(1.05);
     }
     50% {
+        -webkit-transform: translate(20px, -30px) rotate(0deg) scale(0.95);
         transform: translate(20px, -30px) rotate(0deg) scale(0.95);
     }
     75% {
+        -webkit-transform: translate(-25px, -15px) rotate(-1deg) scale(1.03);
         transform: translate(-25px, -15px) rotate(-1deg) scale(1.03);
     }
     100% {
+        -webkit-transform: translate(0, 0) rotate(0deg) scale(1);
         transform: translate(0, 0) rotate(0deg) scale(1);
     }
 }
@@ -134,18 +151,23 @@ body::after {
 /* Animação rápida - movimento menor e mais ágil */
 @keyframes moverEstrelasRapido {
     0% {
+        -webkit-transform: translate(0, 0) rotate(0deg) scale(1);
         transform: translate(0, 0) rotate(0deg) scale(1);
     }
     25% {
+        -webkit-transform: translate(20px, -25px) rotate(-1deg) scale(1.03);
         transform: translate(20px, -25px) rotate(-1deg) scale(1.03);
     }
     50% {
+        -webkit-transform: translate(-15px, 35px) rotate(1deg) scale(0.97);
         transform: translate(-15px, 35px) rotate(1deg) scale(0.97);
     }
     75% {
+        -webkit-transform: translate(30px, 10px) rotate(-1deg) scale(1.02);
         transform: translate(30px, 10px) rotate(-1deg) scale(1.02);
     }
     100% {
+        -webkit-transform: translate(0, 0) rotate(0deg) scale(1);
         transform: translate(0, 0) rotate(0deg) scale(1);
     }
 }
@@ -281,6 +303,7 @@ header {
 /* Card do Produto */
 .produto-card {
     background: rgba(10, 10, 10, 0.7);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 0;
@@ -396,6 +419,7 @@ header {
     height: 100%;
     background-color: rgba(0,0,0,0.95);
     animation: fadeIn 0.3s;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     overflow-y: auto;
     overflow-x: hidden;
@@ -551,6 +575,7 @@ header {
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
     position: relative;
     overflow: hidden;
+    -webkit-appearance: none;
 }
 
 .btn-whatsapp::before {
@@ -626,6 +651,7 @@ header {
                 0 0 40px rgba(37, 211, 102, 0.3);
     animation: pulsarWhatsApp 2s ease-in-out infinite,
                flutuar 3s ease-in-out infinite;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .whatsapp-flutuante:hover {
@@ -651,12 +677,15 @@ header {
 /* Animação de flutuar */
 @keyframes flutuar {
     0%, 100% {
+        -webkit-transform: translateY(0);
         transform: translateY(0);
     }
     50% {
+        -webkit-transform: translateY(-10px);
         transform: translateY(-10px);
     }
 }
+
 /* Animações */
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -664,8 +693,30 @@ header {
 }
 
 @keyframes slideIn {
-    from { transform: translateY(-30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from { -webkit-transform: translateY(-30px); transform: translateY(-30px); opacity: 0; }
+    to { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
+}
+
+/* ========== CORREÇÕES PARA IPHONE ========== */
+@supports (-webkit-overflow-scrolling: touch) {
+    body::before,
+    body::after {
+        background-attachment: scroll;
+    }
+}
+
+/* Previne crash em iOS */
+@media screen and (max-width: 768px) {
+    body::before,
+    body::after {
+        animation-duration: 30s !important;
+    }
+    
+    .whatsapp-flutuante {
+        width: 55px !important;
+        height: 55px !important;
+        font-size: 1.5rem !important;
+    }
 }
 
 /* Responsivo */
