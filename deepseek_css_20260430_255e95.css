@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --cor-primaria: #25D366;
+    --cor-secundaria: #075E54;
+    --cor-escura: #333;
+    --cor-clara: #f5f5f5;
+}
+
+body {
+    background-color: #f0f0f0;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--cor-secundaria), #128C7E);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.logo h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Grid de Produtos */
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* Card do Produto */
+.produto-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.produto-imagem {
+    height: 300px;
+    overflow: hidden;
+}
+
+.produto-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.produto-card:hover .produto-imagem img {
+    transform: scale(1.05);
+}
+
+.produto-info {
+    padding: 1.5rem;
+}
+
+.produto-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--cor-escura);
+}
+
+.preco {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--cor-secundaria);
+    margin-bottom: 1rem;
+}
+
+.btn-ver-mais {
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.btn-ver-mais:hover {
+    background: #128C7E;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 2% auto;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 15px;
+    overflow: hidden;
+    animation: slideIn 0.3s;
+}
+
+.fechar {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.modal-header {
+    height: 400px;
+    overflow: hidden;
+}
+
+.modal-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.modal-body h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--cor-escura);
+}
+
+.modal-body h4 {
+    margin: 1rem 0;
+    color: var(--cor-escura);
+}
+
+/* Tamanhos */
+.tamanhos-grid {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tamanho-btn {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.tamanho-btn:hover {
+    border-color: var(--cor-primaria);
+    background: #f0fff0;
+}
+
+.tamanho-btn.selecionado {
+    background: var(--cor-primaria);
+    color: white;
+    border-color: var(--cor-primaria);
+}
+
+/* Preço */
+.preco-container {
+    margin: 1.5rem 0;
+}
+
+.preco-atual {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--cor-secundaria);
+    display: block;
+}
+
+.parcelamento {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Botão WhatsApp */
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: block;
+    transition: background 0.3s;
+    margin-top: 1rem;
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+}
+
+.btn-whatsapp i {
+    margin-right: 10px;
+    font-size: 1.4rem;
+}
+
+/* WhatsApp Flutuante */
+.whatsapp-flutuante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s;
+    z-index: 999;
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-flutuante:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .produtos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+    }
+    
+    .modal-header {
+        height: 250px;
+    }
+    
+    .modal-body h2 {
+        font-size: 1.5rem;
+    }
+    
+    .preco-atual {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Nome da Sua Loja</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>🛍️ Sua Loja</h1>
+            <p>Catálogo de Produtos</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="produtos-grid">
+            <!-- Produto 1 -->
+            <div class="produto-card" onclick="mostrarDetalhes('produto1')">
+                <div class="produto-imagem">
+                    <img src="imagens/produto1.jpg" alt="Produto 1">
+                </div>
+                <div class="produto-info">
+                    <h3>Vestido Floral</h3>
+                    <p class="preco">R$ 89,90</p>
+                    <button class="btn-ver-mais">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <!-- Produto 2 -->
+            <div class="produto-card" onclick="mostrarDetalhes('produto2')">
+                <div class="produto-imagem">
+                    <img src="imagens/produto2.jpg" alt="Produto 2">
+                </div>
+                <div class="produto-info">
+                    <h3>Conjunto Casual</h3>
+                    <p class="preco">R$ 129,90</p>
+                    <button class="btn-ver-mais">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <!-- Produto 3 -->
+            <div class="produto-card" onclick="mostrarDetalhes('produto3')">
+                <div class="produto-imagem">
+                    <img src="imagens/produto3.jpg" alt="Produto 3">
+                </div>
+                <div class="produto-info">
+                    <h3>Blusa Manga Longa</h3>
+                    <p class="preco">R$ 69,90</p>
+                    <button class="btn-ver-mais">Ver Detalhes</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Detalhes do Produto -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="fechar" onclick="fecharModal()">&times;</span>
+            
+            <div class="modal-header">
+                <img id="modal-imagem" src="" alt="">
+            </div>
+            
+            <div class="modal-body">
+                <h2 id="modal-titulo"></h2>
+                <p id="modal-descricao"></p>
+                
+                <div class="tamanhos">
+                    <h4>Tamanhos Disponíveis:</h4>
+                    <div class="tamanhos-grid">
+                        <button class="tamanho-btn">P</button>
+                        <button class="tamanho-btn">M</button>
+                        <button class="tamanho-btn">G</button>
+                        <button class="tamanho-btn">GG</button>
+                    </div>
+                </div>
+                
+                <div class="preco-container">
+                    <span class="preco-atual" id="modal-preco"></span>
+                    <span class="parcelamento">em até 3x sem juros</span>
+                </div>
+                
+                <a id="whatsapp-link" href="#" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    Comprar pelo WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/SEU_NUMERO?text=Olá! Tenho interesse nos produtos da loja!" 
+       class="whatsapp-flutuante" 
+       target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
