@@ -14,7 +14,7 @@ const produtos = {
         preco: "R$ 89,99",
         precoAntigo: "R$ 120,00",
         imagem: "imagens/camisa-azul.jpg",
-        tamanhos: ["P", "M", "G", "GG"]
+        tamanhos: ["P", "M", "G"]
     }
 };
 
