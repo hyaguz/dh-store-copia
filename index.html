@@ -3,52 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - Nome da Sua Loja</title>
+    <title>DH STORE</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="logo">
-            <h1>🛍️ Sua Loja</h1>
-            <p>Catálogo de Produtos</p>
+            <h1>DH STORE</h1>
+            <p>Coleção Brasil 2026</p>
         </div>
     </header>
 
     <main class="container">
         <div class="produtos-grid">
-            <!-- Produto 1 -->
+            <!-- Produto 1 - Camisa Amarela -->
             <div class="produto-card" onclick="mostrarDetalhes('produto1')">
                 <div class="produto-imagem">
-                    <img src="imagens/produto1.jpg" alt="Produto 1">
+                    <img src="imagens/camisa-amarela.jpg" alt="Camisa Brasil 2026 Amarela">
                 </div>
                 <div class="produto-info">
-                    <h3>Vestido Floral</h3>
-                    <p class="preco">R$ 89,90</p>
+                    <h3>Brasil 2026 - Amarela</h3>
+                    <div class="preco-container-card">
+                        <span class="preco-antigo-card">R$ 120,00</span>
+                        <span class="preco">R$ 89,99</span>
+                    </div>
                     <button class="btn-ver-mais">Ver Detalhes</button>
                 </div>
             </div>
 
-            <!-- Produto 2 -->
+            <!-- Produto 2 - Camisa Azul -->
             <div class="produto-card" onclick="mostrarDetalhes('produto2')">
                 <div class="produto-imagem">
-                    <img src="imagens/produto2.jpg" alt="Produto 2">
+                    <img src="imagens/camisa-azul.jpg" alt="Camisa Brasil 2026 Azul">
                 </div>
                 <div class="produto-info">
-                    <h3>Conjunto Casual</h3>
-                    <p class="preco">R$ 129,90</p>
-                    <button class="btn-ver-mais">Ver Detalhes</button>
-                </div>
-            </div>
-
-            <!-- Produto 3 -->
-            <div class="produto-card" onclick="mostrarDetalhes('produto3')">
-                <div class="produto-imagem">
-                    <img src="imagens/produto3.jpg" alt="Produto 3">
-                </div>
-                <div class="produto-info">
-                    <h3>Blusa Manga Longa</h3>
-                    <p class="preco">R$ 69,90</p>
+                    <h3>Brasil 2026 - Azul</h3>
+                    <div class="preco-container-card">
+                        <span class="preco-antigo-card">R$ 120,00</span>
+                        <span class="preco">R$ 89,99</span>
+                    </div>
                     <button class="btn-ver-mais">Ver Detalhes</button>
                 </div>
             </div>
@@ -79,8 +73,9 @@
                 </div>
                 
                 <div class="preco-container">
-                    <span class="preco-atual" id="modal-preco"></span>
-                    <span class="parcelamento">em até 3x sem juros</span>
+                    <span class="preco-antigo-modal" id="modal-preco-antigo">R$ 120,00</span>
+                    <span class="preco-atual" id="modal-preco">R$ 89,99</span>
+                    <span class="parcelamento">em até 3x de R$ 30,00 sem juros</span>
                 </div>
                 
                 <a id="whatsapp-link" href="#" target="_blank" class="btn-whatsapp">
@@ -92,7 +87,7 @@
     </div>
 
     <!-- Botão Flutuante do WhatsApp -->
-    <a href="https://wa.me/SEU_NUMERO?text=Olá! Tenho interesse nos produtos da loja!" 
+    <a href="https://wa.me/5541987984450?text=Olá! Tenho interesse nos produtos da DH STORE!" 
        class="whatsapp-flutuante" 
        target="_blank">
         <i class="fab fa-whatsapp"></i>
