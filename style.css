@@ -114,28 +114,93 @@ header, main, .whatsapp-flutuante, .modal {
     z-index: 1;
 }
 
-/* Header Minimalista */
+/* ========== HEADER COM NOME ESTILO APPLE ========== */
 header {
     background: transparent;
-    color: white;
     text-align: center;
-    padding: 4rem 1rem 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5rem 1rem 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 .logo h1 {
-    font-size: 3rem;
-    font-weight: 300;
-    letter-spacing: 8px;
-    margin-bottom: 0.5rem;
+    font-size: 4rem;
+    font-weight: 200;
+    letter-spacing: 12px;
     text-transform: uppercase;
+    
+    /* EFEITO BRILHO ESTILO APPLE */
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f0f0f0 20%,
+        #ffffff 40%,
+        #e0e0e0 60%,
+        #ffffff 80%,
+        #d0d0d0 100%
+    );
+    background-size: 100% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Brilho suave ao redor */
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))
+            drop-shadow(0 0 40px rgba(255, 255, 255, 0.1));
+    
+    /* Animação do brilho */
+    animation: brilhoApple 4s ease-in-out infinite;
+    
+    position: relative;
 }
 
-.logo p {
-    font-size: 0.9rem;
-    opacity: 0.5;
-    letter-spacing: 4px;
-    text-transform: uppercase;
+/* Efeito de reflexo na parte de cima das letras */
+.logo h1::after {
+    content: 'DH STORE';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    background-size: 100% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: brilhoReflexo 3s ease-in-out infinite;
+}
+
+@keyframes brilhoApple {
+    0%, 100% {
+        background-position: 0% 0%;
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))
+                drop-shadow(0 0 40px rgba(255, 255, 255, 0.1));
+    }
+    50% {
+        background-position: 0% 100%;
+        filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5))
+                drop-shadow(0 0 60px rgba(255, 255, 255, 0.2));
+    }
+}
+
+@keyframes brilhoReflexo {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 /* Container */
@@ -504,7 +569,7 @@ header {
     }
     
     .logo h1 {
-        font-size: 2rem;
-        letter-spacing: 4px;
+        font-size: 2.5rem;
+        letter-spacing: 8px;
     }
 }
