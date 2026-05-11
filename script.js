@@ -26,15 +26,60 @@ const produtos = {
     }
 };
 
-// Variáveis do carrossel
+// Variáveis do carrossel do modal
 let imagemAtual = 0;
 let imagensProduto = [];
 let intervaloAutomatico;
 let touchStartX = 0;
 let touchEndX = 0;
 
+// Variáveis dos carrosséis da vitrine
+let intervalosVitrine = {};
+let imagensAtuaisVitrine = {};
+
 // Número do WhatsApp
 const NUMERO_WHATSAPP = "5598981865930";
+
+// ========== CARROSSEL DA VITRINE (PÁGINA INICIAL) ==========
+
+function iniciarCarrosselVitrine(produtoId) {
+    const produto = produtos[produtoId];
+    const card = document.querySelector(`[data-produto="${produtoId}"]`);
+    if (!card) return;
+    
+    const img = card.querySelector('.vitrine-imagem');
+    if (!img) return;
+    
+    imagensAtuaisVitrine[produtoId] = 0;
+    
+    // Limpar intervalo anterior se existir
+    if (intervalosVitrine[produtoId]) {
+        clearInterval(intervalosVitrine[produtoId]);
+    }
+    
+    // Trocar imagem a cada 3 segundos
+    intervalosVitrine[produtoId] = setInterval(() => {
+        imagensAtuaisVitrine[produtoId]++;
+        if (imagensAtuaisVitrine[produtoId] >= produto.imagens.length) {
+            imagensAtuaisVitrine[produtoId] = 0;
+        }
+        img.src = produto.imagens[imagensAtuaisVitrine[produtoId]];
+        
+        // Efeito de transição suave
+        img.style.opacity = '0.7';
+        setTimeout(() => {
+            img.style.opacity = '1';
+        }, 150);
+    }, 3000);
+}
+
+// Iniciar carrosséis da vitrine quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    iniciarCarrosselVitrine('produto1');
+    iniciarCarrosselVitrine('produto2');
+});
+
+// ========== MODAL E CARROSSEL PRINCIPAL ==========
 
 // Função para mostrar detalhes do produto
 function mostrarDetalhes(produtoId) {
@@ -47,7 +92,7 @@ function mostrarDetalhes(produtoId) {
         document.getElementById('modal-preco').textContent = produto.preco;
         document.getElementById('modal-preco-antigo').textContent = produto.precoAntigo;
         
-        // Configurar carrossel
+        // Configurar carrossel do modal
         imagensProduto = produto.imagens;
         imagemAtual = 0;
         carregarCarrossel();
@@ -76,7 +121,7 @@ function mostrarDetalhes(produtoId) {
     }
 }
 
-// Carregar imagens no carrossel
+// Carregar imagens no carrossel do modal
 function carregarCarrossel() {
     const containerImagens = document.getElementById('carrossel-imagens');
     const containerIndicadores = document.getElementById('carrossel-indicadores');
@@ -142,7 +187,7 @@ function iniciarTrocaAutomatica() {
     pararTrocaAutomatica();
     intervaloAutomatico = setInterval(() => {
         mudarImagem(1);
-    }, 4000); // Troca a cada 4 segundos
+    }, 4000);
 }
 
 function pararTrocaAutomatica() {
@@ -166,9 +211,9 @@ function configurarTouch() {
         
         if (Math.abs(diferenca) > 50) {
             if (diferenca > 0) {
-                mudarImagem(1); // Arrastou para esquerda
+                mudarImagem(1);
             } else {
-                mudarImagem(-1); // Arrastou para direita
+                mudarImagem(-1);
             }
         }
         iniciarTrocaAutomatica();
