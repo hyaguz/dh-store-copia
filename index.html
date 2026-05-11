@@ -54,7 +54,16 @@
             <span class="fechar" onclick="fecharModal()">&times;</span>
             
             <div class="modal-header">
-                <img id="modal-imagem" src="" alt="">
+                <div class="carrossel-container">
+                    <div class="carrossel-imagens" id="carrossel-imagens">
+                        <!-- As imagens serão inseridas pelo JavaScript -->
+                    </div>
+                    <button class="carrossel-btn carrossel-anterior" onclick="mudarImagem(-1)">&#10094;</button>
+                    <button class="carrossel-btn carrossel-proximo" onclick="mudarImagem(1)">&#10095;</button>
+                    <div class="carrossel-indicadores" id="carrossel-indicadores">
+                        <!-- Os indicadores serão inseridos pelo JavaScript -->
+                    </div>
+                </div>
             </div>
             
             <div class="modal-body">
@@ -64,10 +73,7 @@
                 <div class="tamanhos">
                     <h4>Tamanhos Disponíveis:</h4>
                     <div class="tamanhos-grid">
-                        <button class="tamanho-btn">P</button>
-                        <button class="tamanho-btn">M</button>
-                        <button class="tamanho-btn">G</button>
-                        <button class="tamanho-btn">GG</button>
+                        <!-- Os tamanhos serão inseridos pelo JavaScript -->
                     </div>
                 </div>
                 
