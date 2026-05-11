@@ -6,7 +6,7 @@ const produtos = {
         preco: "R$ 89,99",
         precoAntigo: "R$ 120,00",
         imagem: "imagens/camisa-amarela.jpg",
-        tamanhos: ["P", "M", "G"]
+        tamanhos: ["P", "M" ]
     },
     produto2: {
         nome: "Camisa Brasil 2026 - Azul",
@@ -14,7 +14,7 @@ const produtos = {
         preco: "R$ 89,99",
         precoAntigo: "R$ 120,00",
         imagem: "imagens/camisa-azul.jpg",
-        tamanhos: ["P", "M", "G"]
+        tamanhos: ["M", "G"]
     }
 };
 
