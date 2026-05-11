@@ -19,7 +19,7 @@ const produtos = {
 };
 
 // Número do WhatsApp CORRETO
-const NUMERO_WHATSAPP = "5541987984450";
+const NUMERO_WHATSAPP = "5598981865930";
 
 // Função para mostrar detalhes do produto
 function mostrarDetalhes(produtoId) {
