@@ -316,4 +316,47 @@ document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         fecharModal();
     }
+    // Forçar visibilidade dos indicadores no celular
+document.addEventListener('DOMContentLoaded', function() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .carrossel-indicadores {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            z-index: 9999 !important;
+            pointer-events: auto !important;
+            position: absolute !important;
+            bottom: 15px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            background: rgba(0,0,0,0.5) !important;
+            padding: 5px 10px !important;
+            border-radius: 20px !important;
+        }
+        .indicador {
+            display: inline-block !important;
+            width: 12px !important;
+            height: 12px !important;
+            min-width: 12px !important;
+            min-height: 12px !important;
+            border-radius: 50% !important;
+            background: rgba(255,255,255,0.5) !important;
+            border: 2px solid rgba(255,255,255,0.8) !important;
+            cursor: pointer !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            -webkit-appearance: none !important;
+        }
+        .indicador.ativo {
+            background: #ffffff !important;
+            border-color: #ffffff !important;
+            transform: scale(1.4) !important;
+            box-shadow: 0 0 10px rgba(255,255,255,0.8) !important;
+        }
+    `;
+    document.head.appendChild(style);
+});
 });
