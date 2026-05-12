@@ -62,12 +62,12 @@ body::before {
     50% { opacity: 1; }
 }
 
-/* Header com Logo */
+/* Header com Logo - Estilo Nike/Adidas */
 header {
     background: transparent;
     text-align: center;
-    padding: 3rem 1rem 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2rem 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     z-index: 1;
 }
@@ -78,26 +78,15 @@ header {
     align-items: center;
 }
 
-/* Imagem da Logo */
+/* Imagem da Logo - Tamanho Nike/Adidas */
 .logo-imagem {
-    max-width: 160px;
+    max-width: 70px;
     height: auto;
     display: block;
     margin: 0 auto;
-    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4))
-            drop-shadow(0 0 40px rgba(255, 255, 255, 0.2));
-    animation: brilhoLogo 3s ease-in-out infinite;
-}
-
-@keyframes brilhoLogo {
-    0%, 100% {
-        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4))
-                drop-shadow(0 0 40px rgba(255, 255, 255, 0.2));
-    }
-    50% {
-        filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.7))
-                drop-shadow(0 0 60px rgba(255, 255, 255, 0.4));
-    }
+    filter: brightness(0) invert(1)
+            drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    transition: all 0.3s ease;
 }
 
 /* Container */
