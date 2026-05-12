@@ -80,7 +80,7 @@ header {
 
 /* Imagem da Logo - Tamanho Médio-Grande */
 .logo-imagem {
-    max-width: 150px;
+    max-width: 180px;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -425,7 +425,7 @@ header {
     }
     
     .logo-imagem {
-        max-width: 115px;
+        max-width: 130px;
     }
     
     .preco-atual {
