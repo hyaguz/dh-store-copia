@@ -78,9 +78,9 @@ header {
     align-items: center;
 }
 
-/* Imagem da Logo - Tamanho Médio-Grande */
+/* Imagem da Logo */
 .logo-imagem {
-    max-width: 300px;
+    width: 200px;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -425,7 +425,7 @@ header {
     }
     
     .logo-imagem {
-        max-width: 160px;
+    width: 140px;
     }
     
     .preco-atual {
