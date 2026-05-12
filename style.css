@@ -78,9 +78,9 @@ header {
     align-items: center;
 }
 
-/* Imagem da Logo - Tamanho Nike/Adidas */
+/* Imagem da Logo - Tamanho Médio-Grande */
 .logo-imagem {
-    max-width: 70px;
+    max-width: 115px;
     height: auto;
     display: block;
     margin: 0 auto;
