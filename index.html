@@ -17,35 +17,35 @@
     <main class="container">
         <div class="produtos-grid">
             <!-- Produto 1 - Camisa Amarela -->
-            <div class="produto-card" onclick="mostrarDetalhes('produto1')">
-                <div class="produto-imagem">
-                    <img src="imagens/camisa-amarela.jpg" alt="Camisa Brasil 2026 Amarela">
-                </div>
-                <div class="produto-info">
-                    <h3>Brasil 2026 - Amarela</h3>
-                    <div class="preco-container-card">
-                        <span class="preco-antigo-card">R$ 120,00</span>
-                        <span class="preco">R$ 89,99</span>
-                    </div>
-                    <button class="btn-ver-mais">Ver Detalhes</button>
-                </div>
-            </div>
-
-            <!-- Produto 2 - Camisa Azul -->
-            <div class="produto-card" onclick="mostrarDetalhes('produto2')">
-                <div class="produto-imagem">
-                    <img src="imagens/camisa-azul.jpg" alt="Camisa Brasil 2026 Azul">
-                </div>
-                <div class="produto-info">
-                    <h3>Brasil 2026 - Azul</h3>
-                    <div class="preco-container-card">
-                        <span class="preco-antigo-card">R$ 120,00</span>
-                        <span class="preco">R$ 89,99</span>
-                    </div>
-                    <button class="btn-ver-mais">Ver Detalhes</button>
-                </div>
-            </div>
+<div class="produto-card" data-produto="produto1" onclick="mostrarDetalhes('produto1')">
+    <div class="produto-imagem">
+        <img src="imagens/camisa-amarela.jpg" alt="Camisa Brasil 2026 Amarela" class="vitrine-imagem" style="transition: opacity 0.5s ease;">
+    </div>
+    <div class="produto-info">
+        <h3>Brasil 2026 - Amarela</h3>
+        <div class="preco-container-card">
+            <span class="preco-antigo-card">R$ 120,00</span>
+            <span class="preco">R$ 89,99</span>
         </div>
+        <button class="btn-ver-mais">Ver Detalhes</button>
+    </div>
+</div>
+
+<!-- Produto 2 - Camisa Azul -->
+<div class="produto-card" data-produto="produto2" onclick="mostrarDetalhes('produto2')">
+    <div class="produto-imagem">
+        <img src="imagens/camisa-azul.jpg" alt="Camisa Brasil 2026 Azul" class="vitrine-imagem" style="transition: opacity 0.5s ease;">
+    </div>
+    <div class="produto-info">
+        <h3>Brasil 2026 - Azul</h3>
+        <div class="preco-container-card">
+            <span class="preco-antigo-card">R$ 120,00</span>
+            <span class="preco">R$ 89,99</span>
+        </div>
+        <button class="btn-ver-mais">Ver Detalhes</button>
+    </div>
+</div>
+
     </main>
 
     <!-- Modal de Detalhes do Produto -->
