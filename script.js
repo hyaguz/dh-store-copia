@@ -57,20 +57,31 @@ function iniciarCarrosselVitrine(produtoId) {
         clearInterval(intervalosVitrine[produtoId]);
     }
     
-    // Trocar imagem a cada 3 segundos
+    // Pré-carregar todas as imagens para transição fluida
+    produto.imagens.forEach(src => {
+        const preload = new Image();
+        preload.src = src;
+    });
+    
+    // Trocar imagem com efeito fade suave
     intervalosVitrine[produtoId] = setInterval(() => {
-        imagensAtuaisVitrine[produtoId]++;
-        if (imagensAtuaisVitrine[produtoId] >= produto.imagens.length) {
-            imagensAtuaisVitrine[produtoId] = 0;
-        }
-        img.src = produto.imagens[imagensAtuaisVitrine[produtoId]];
+        // Fade out lento
+        img.style.opacity = '0';
+        img.style.transform = 'scale(1.03)';
         
-        // Efeito de transição suave
-        img.style.opacity = '0.7';
         setTimeout(() => {
+            // Trocar para próxima imagem
+            imagensAtuaisVitrine[produtoId]++;
+            if (imagensAtuaisVitrine[produtoId] >= produto.imagens.length) {
+                imagensAtuaisVitrine[produtoId] = 0;
+            }
+            img.src = produto.imagens[imagensAtuaisVitrine[produtoId]];
+            
+            // Fade in suave
             img.style.opacity = '1';
-        }, 150);
-    }, 3000);
+            img.style.transform = 'scale(1)';
+        }, 500);
+    }, 4000);
 }
 
 // Iniciar carrosséis da vitrine quando a página carregar
@@ -134,6 +145,7 @@ function carregarCarrossel() {
         const img = document.createElement('img');
         img.src = imagem;
         img.alt = 'Foto do produto ' + (index + 1);
+        img.style.transition = 'opacity 0.5s ease-in-out';
         containerImagens.appendChild(img);
         
         // Criar indicador
@@ -150,6 +162,7 @@ function carregarCarrossel() {
 // Atualizar posição do carrossel
 function atualizarPosicaoCarrossel() {
     const containerImagens = document.getElementById('carrossel-imagens');
+    containerImagens.style.transition = 'transform 0.6s ease-in-out';
     containerImagens.style.transform = `translateX(-${imagemAtual * 100}%)`;
     
     // Atualizar indicadores
@@ -199,13 +212,18 @@ function pararTrocaAutomatica() {
 // Configurar touch/arraste
 function configurarTouch() {
     const carrossel = document.querySelector('.carrossel-container');
+    if (!carrossel) return;
     
-    carrossel.addEventListener('touchstart', (e) => {
+    // Remove listeners antigos para evitar duplicação
+    const novoCarrossel = carrossel.cloneNode(true);
+    carrossel.parentNode.replaceChild(novoCarrossel, carrossel);
+    
+    novoCarrossel.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].clientX;
         pararTrocaAutomatica();
     }, { passive: true });
     
-    carrossel.addEventListener('touchend', (e) => {
+    novoCarrossel.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].clientX;
         const diferenca = touchStartX - touchEndX;
         
@@ -223,13 +241,13 @@ function configurarTouch() {
     let mouseDown = false;
     let mouseStartX = 0;
     
-    carrossel.addEventListener('mousedown', (e) => {
+    novoCarrossel.addEventListener('mousedown', (e) => {
         mouseDown = true;
         mouseStartX = e.clientX;
         pararTrocaAutomatica();
     });
     
-    carrossel.addEventListener('mouseup', (e) => {
+    novoCarrossel.addEventListener('mouseup', (e) => {
         if (mouseDown) {
             const diferenca = mouseStartX - e.clientX;
             if (Math.abs(diferenca) > 50) {
@@ -244,7 +262,7 @@ function configurarTouch() {
         }
     });
     
-    carrossel.addEventListener('mouseleave', () => {
+    novoCarrossel.addEventListener('mouseleave', () => {
         if (mouseDown) {
             mouseDown = false;
             iniciarTrocaAutomatica();
